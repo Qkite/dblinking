@@ -7,39 +7,46 @@ public class UserDao1 {
     public void add(User user) throws ClassNotFoundException, SQLException {
 
         Map<String, String> env = System.getenv();
-        String dbHost = env.get("DB_HOST");
-        String dbUser = env.get("DB_USER");
-        String dbPassword = env.get("DB_PASSWORD");
 
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = DriverManager.getConnection(dbHost,dbUser,dbPassword);
-        PreparedStatement ps = conn.prepareStatement("INSERT INTO users(id, name, password) VALUES(?, ?, ?)");
-        ps.setString (1, user.getId());
+        Connection connection;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = makeConnection();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        PreparedStatement ps = connection.prepareStatement("INSERT INTO users(id, name, password) VALUES(?, ?, ?)");
+        ps.setString(1, user.getId());
         ps.setString(2, user.getName());
         ps.setString(3, user.getPassword());
 
         ps.executeUpdate();
         ps.close();
-        conn.close();
+        connection.close();
 
     }
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UserDao1 userDao2 = new UserDao1();
-        userDao2.add(new User("7", "Ruru", "1123457"));
 
-    }
 
 
     public User findById(String id) throws ClassNotFoundException, SQLException {
-        Map<String, String> env = System.getenv();
-        String dbHost = env.get("DB_HOST");
-        String dbUser = env.get("DB_USER");
-        String dbPassword = env.get("DB_PASSWORD");
 
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = DriverManager.getConnection(dbHost,dbUser,dbPassword);
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM users WHERE id = ?");
+        Map<String, String> env = System.getenv();
+
+        Connection connection;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = makeConnection();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
 
         ps.setString(1,id);
 
@@ -48,15 +55,25 @@ public class UserDao1 {
         rs.next();
         String[] outputs = {rs.getString(1), rs.getString(2),  rs.getString(3)};
 
-
         rs.close();
         ps.close();
-        conn.close();
-
+        connection.close();
 
         return new User(outputs[0], outputs[1], outputs[2]);
 
+    }
 
+    private Connection makeConnection() throws SQLException {
+        Map<String, String> env = System.getenv();
+        Connection c = DriverManager.getConnection(env.get("DB_HOST"), env.get("DB_USER"), env.get("DB_PASSWORD"));
+
+        return c;
+
+    }
+
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        UserDao1 userDao2 = new UserDao1();
+        userDao2.add(new User("7", "Ruru", "1123457"));
 
     }
 
