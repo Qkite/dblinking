@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserDao1Test {
     @Test
     void addAndSelect() throws SQLException, ClassNotFoundException {
-        UserDao1 userDao1 = new UserDao1();
+        LocalUserDaoImpl userDao1 = new LocalUserDaoImpl();
         User user = new User("8", "EternityHwan", "11234");
         userDao1.add(user);
 

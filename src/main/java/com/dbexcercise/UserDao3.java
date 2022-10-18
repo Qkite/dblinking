@@ -3,15 +3,23 @@ package com.dbexcercise;
 import java.sql.*;
 import java.util.Map;
 
-public class UserDao1 {
+public class UserDao3 {
+
+    private SimpleConnectionMaker simpleConnectionMaker;
+
+    public UserDao3(){
+        simpleConnectionMaker = new SimpleConnectionMaker();
+
+    }
     public void add(User user) throws ClassNotFoundException, SQLException {
 
         Map<String, String> env = System.getenv();
 
+
         Connection connection;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = makeConnection();
+            connection = simpleConnectionMaker.makeConnection();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (SQLException e) {
@@ -39,7 +47,7 @@ public class UserDao1 {
         Connection connection;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = makeConnection();
+            connection = simpleConnectionMaker.makeConnection();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (SQLException e) {
@@ -72,7 +80,7 @@ public class UserDao1 {
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UserDao1 userDao1 = new UserDao1();
+        UserDao3 userDao1 = new UserDao3();
         userDao1.add(new User("7", "Ruru", "1123457"));
 
     }

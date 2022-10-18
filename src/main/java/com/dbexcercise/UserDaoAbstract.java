@@ -3,7 +3,7 @@ package com.dbexcercise;
 import java.sql.*;
 import java.util.Map;
 
-public class UserDao1 {
+public abstract class UserDaoAbstract {
     public void add(User user) throws ClassNotFoundException, SQLException {
 
         Map<String, String> env = System.getenv();
@@ -63,17 +63,18 @@ public class UserDao1 {
 
     }
 
-    private Connection makeConnection() throws SQLException {
-        Map<String, String> env = System.getenv();
-        Connection c = DriverManager.getConnection(env.get("DB_HOST"), env.get("DB_USER"), env.get("DB_PASSWORD"));
+    public abstract Connection makeConnection() throws SQLException;
+    //{
+        //Map<String, String> env = System.getenv();
+        //Connection c = DriverManager.getConnection(env.get("DB_HOST"), env.get("DB_USER"), env.get("DB_PASSWORD"));
 
-        return c;
+        //return c;
 
-    }
+    //}
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UserDao1 userDao1 = new UserDao1();
-        userDao1.add(new User("7", "Ruru", "1123457"));
+        //UserDaoAbstract userDao2 = new UserDaoAbstract();
+        //userDao2.add(new User("7", "Ruru", "1123457"));
 
     }
 
