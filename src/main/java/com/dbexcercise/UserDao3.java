@@ -3,6 +3,7 @@ package com.dbexcercise;
 import java.sql.*;
 import java.util.Map;
 
+// connectionmaker이용
 public class UserDao3 {
 
     private SimpleConnectionMaker simpleConnectionMaker;

@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Map;
 
+// 추상 클래스 이용
 public class LocalUserDaoImpl extends UserDaoAbstract{
 
     @Override

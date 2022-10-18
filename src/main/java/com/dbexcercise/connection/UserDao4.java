@@ -1,19 +1,29 @@
-package com.dbexcercise;
+package com.dbexcercise.connection;
+
+import com.dbexcercise.SimpleConnectionMaker;
+import com.dbexcercise.User;
 
 import java.sql.*;
 import java.util.Map;
 
-// connection 분리
+// interface를 상속받은 Nconnectionmaker 이용
+public class UserDao4 {
 
-public class UserDao1 {
+    private NConnectionMaker nConnectionMaker;
+
+    public UserDao4(){
+        nConnectionMaker = new NConnectionMaker();
+
+    }
     public void add(User user) throws ClassNotFoundException, SQLException {
 
         Map<String, String> env = System.getenv();
 
+
         Connection connection;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = makeConnection();
+            connection = nConnectionMaker.makeConnection();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (SQLException e) {
@@ -41,7 +51,7 @@ public class UserDao1 {
         Connection connection;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = makeConnection();
+            connection = nConnectionMaker.makeConnection();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (SQLException e) {
@@ -74,7 +84,7 @@ public class UserDao1 {
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UserDao1 userDao1 = new UserDao1();
+        UserDao4 userDao1 = new UserDao4();
         userDao1.add(new User("7", "Ruru", "1123457"));
 
     }
