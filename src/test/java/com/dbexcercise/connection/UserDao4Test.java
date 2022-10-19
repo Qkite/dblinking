@@ -13,7 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserDao4Test {
     @Test
     void addAndSelect() throws SQLException, ClassNotFoundException {
-        UserDao4 userDao = new UserDao4();
+        //UserDao4 userDao = new UserDao4();
+        UserDao4 userDao = new UserDaoFactory().nConnectionUserDao(); // factory에서 설정한 조합을 가져와서 사용
         User user = new User("8", "EternityHwan", "11234");
         userDao.add(user);
 

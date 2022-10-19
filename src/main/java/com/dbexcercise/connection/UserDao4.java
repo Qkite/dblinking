@@ -10,9 +10,15 @@ import java.util.Map;
 public class UserDao4 {
 
     private NConnectionMaker nConnectionMaker;
+    private DConnectionMaker dConnectionMaker;
 
-    public UserDao4(){
+    public UserDao4(NConnectionMaker nConnectionMaker){
         nConnectionMaker = new NConnectionMaker();
+
+    }
+
+    public UserDao4(DConnectionMaker dConnectionMaker){
+        dConnectionMaker = new DConnectionMaker();
 
     }
     public void add(User user) throws ClassNotFoundException, SQLException {
@@ -85,7 +91,7 @@ public class UserDao4 {
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UserDao4 userDao1 = new UserDao4();
+        UserDao4 userDao1 = new UserDao4(new NConnectionMaker());
         userDao1.add(new User("7", "Ruru", "1123457"));
 
     }
