@@ -16,6 +16,7 @@ public class UserDaoFactory {
         return userDao4;
     }
 
+    @Bean
     public UserDao4 dConnectionUserDao(){
         DConnectionMaker dConnectionMaker = new DConnectionMaker();
         UserDao4 userDao4 = new UserDao4(dConnectionMaker);
