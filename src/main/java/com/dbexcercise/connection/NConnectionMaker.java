@@ -8,6 +8,8 @@ import java.util.Map;
 // 인터페이스 이용함
 
 public class NConnectionMaker implements ConnectionMaker{
+
+
     @Override
     public Connection makeConnection() throws ClassNotFoundException, SQLException {
         Map<String, String> env = System.getenv();

@@ -12,6 +12,10 @@ public class UserDao4 {
     private NConnectionMaker nConnectionMaker;
     private DConnectionMaker dConnectionMaker;
 
+    public UserDao4(){
+        nConnectionMaker = new NConnectionMaker(); // default는 nconnection
+
+    }
     public UserDao4(NConnectionMaker nConnectionMaker){
         nConnectionMaker = new NConnectionMaker();
 
