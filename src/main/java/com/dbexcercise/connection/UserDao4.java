@@ -75,11 +75,12 @@ public class UserDao4 {
 
     }
 
-    private Connection makeConnection() throws SQLException {
-        Map<String, String> env = System.getenv();
-        Connection c = DriverManager.getConnection(env.get("DB_HOST"), env.get("DB_USER"), env.get("DB_PASSWORD"));
 
-        return c;
+
+    // user 테이블의 모든 레코드를 삭제함
+    public void deleteAll() throws SQLException, ClassNotFoundException {
+        Connection connection = nConnectionMaker.makeConnection();
+
 
     }
 

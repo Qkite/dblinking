@@ -1,40 +1,36 @@
-package com.dbexcercise;
+package com.dbexcercise.connection_practice;
+
+import com.dbexcercise.User;
+import com.dbexcercise.UserDao2;
 
 import java.sql.*;
 import java.util.Map;
 
-public class UserDao2 {
+public class UserDao00 {
     public void add() throws ClassNotFoundException, SQLException {
 
-        Map<String, String> env = System.getenv();
-        String dbHost = env.get("DB_HOST");
-        String dbUser = env.get("DB_USER");
-        String dbPassword = env.get("DB_PASSWORD");
-
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = DriverManager.getConnection(dbHost,dbUser,dbPassword);
-        PreparedStatement ps = conn.prepareStatement("INSERT INTO users(id, name, password) VALUES(?, ?, ?)");
+        MakeConnection makeConnection = new MakeConnection();
+        Connection connection = makeConnection.makeConnection();
+
+        PreparedStatement ps = connection.prepareStatement("INSERT INTO users(id, name, password) VALUES(?, ?, ?)");
         ps.setString (1, "2");
         ps.setString(2, "Yeonji");
         ps.setString(3,"45678");
 
         ps.executeUpdate();
         ps.close();
-        conn.close();
+        connection.close();
 
     }
 
 
     public User findById(String id) throws ClassNotFoundException, SQLException {
 
-        Map<String, String> env = System.getenv();
-        String dbHost = env.get("DB_HOST");
-        String dbUser = env.get("DB_USER");
-        String dbPassword = env.get("DB_PASSWORD");
 
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection(dbHost,dbUser,dbPassword);
-
+        MakeConnection makeConnection = new MakeConnection();
+        Connection connection = makeConnection.makeConnection();
 
         PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
 
@@ -54,8 +50,9 @@ public class UserDao2 {
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UserDao2 userDao2 = new UserDao2();
-        userDao2.add();
+        UserDao00 userDao00 = new UserDao00();
+        userDao00.add();
 
     }
+
 }
