@@ -12,14 +12,14 @@ public class UserDaoFactory {
     @Bean
     public UserDao4 nConnectionUserDao(){
         NConnectionMaker nConnectionMaker = new NConnectionMaker();
-        UserDao4 userDao4 = new UserDao4(nConnectionMaker);
+        UserDao4 userDao4 = new UserDao4();
         return userDao4;
     }
 
     @Bean
     public UserDao4 dConnectionUserDao(){
         DConnectionMaker dConnectionMaker = new DConnectionMaker();
-        UserDao4 userDao4 = new UserDao4(dConnectionMaker);
+        UserDao4 userDao4 = new UserDao4();
         return userDao4;
     }
 }

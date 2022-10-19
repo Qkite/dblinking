@@ -9,13 +9,15 @@ import java.util.Map;
 // interface를 상속받은 Nconnectionmaker 이용
 public class UserDao4 {
 
-    private NConnectionMaker nConnectionMaker;
-    private DConnectionMaker dConnectionMaker;
+    private NConnectionMaker nConnectionMaker= new NConnectionMaker();;
+    private DConnectionMaker dConnectionMaker = new DConnectionMaker();
 
     public UserDao4(){
-        nConnectionMaker = new NConnectionMaker(); // default는 nconnection
+        // default constructor
 
     }
+
+
     public UserDao4(NConnectionMaker nConnectionMaker){
         nConnectionMaker = new NConnectionMaker();
 
@@ -95,7 +97,7 @@ public class UserDao4 {
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UserDao4 userDao1 = new UserDao4(new NConnectionMaker());
+        UserDao4 userDao1 = new UserDao4();
         userDao1.add(new User("7", "Ruru", "1123457"));
 
     }
