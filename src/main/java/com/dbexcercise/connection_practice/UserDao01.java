@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDao01 {
-    public void add() throws ClassNotFoundException, SQLException {
+    public void add(User user) throws ClassNotFoundException, SQLException {
 
         Class.forName("com.mysql.cj.jdbc.Driver");
         MakeConnectionWithInterface makeConnectionWithInterface = new MakeConnectionWithInterface();
@@ -52,7 +52,7 @@ public class UserDao01 {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         UserDao01 userDao01 = new UserDao01();
-        userDao01.add();
+        userDao01.add(new User("11", "Hello", "112233"));
 
     }
 }
