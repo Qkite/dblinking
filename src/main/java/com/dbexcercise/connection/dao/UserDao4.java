@@ -1,6 +1,6 @@
 package com.dbexcercise.connection.dao;
 
-import com.dbexcercise.User;
+import com.dbexcercise.connection_with_abstract_class.domain.User;
 import com.dbexcercise.connection.connectionmaker.DConnectionMaker;
 import com.dbexcercise.connection.connectionmaker.NConnectionMaker;
 

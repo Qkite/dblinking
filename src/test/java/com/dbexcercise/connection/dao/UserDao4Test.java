@@ -1,21 +1,15 @@
 package com.dbexcercise.connection.dao;
 
-import com.dbexcercise.LocalUserDaoImpl;
-import com.dbexcercise.User;
-import com.dbexcercise.connection.dao.UserDao4;
-import com.dbexcercise.connection.dao.UserDaoFactory;
+import com.dbexcercise.connection_with_abstract_class.domain.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.sql.SQLException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 // 인터페이스 이용 test
 @ExtendWith(SpringExtension.class)

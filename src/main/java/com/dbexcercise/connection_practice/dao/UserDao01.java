@@ -1,6 +1,6 @@
 package com.dbexcercise.connection_practice.dao;
 
-import com.dbexcercise.User;
+import com.dbexcercise.connection_with_abstract_class.domain.User;
 import com.dbexcercise.connection_practice.connectionmaker.MakeConnectionWithInterface;
 
 import java.sql.Connection;

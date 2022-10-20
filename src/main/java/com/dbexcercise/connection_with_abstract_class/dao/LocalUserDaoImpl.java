@@ -1,13 +1,13 @@
-package com.dbexcercise;
+package com.dbexcercise.connection_with_abstract_class.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Map;
 
-
 // 추상 클래스 이용
-public class AWSUserDaoImpl extends UserDaoAbstract {
+public class LocalUserDaoImpl extends UserDaoAbstract {
+
     @Override
     public Connection makeConnection() throws SQLException {
         Map<String, String> env = System.getenv();

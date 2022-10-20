@@ -1,6 +1,6 @@
 package com.dbexcercise.connection_practice;
 
-import com.dbexcercise.User;
+import com.dbexcercise.connection_with_abstract_class.domain.User;
 import com.dbexcercise.connection.UserDao4;
 import com.dbexcercise.connection_practice.dao.UserDao01;
 import org.junit.jupiter.api.Assertions;

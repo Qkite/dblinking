@@ -1,4 +1,6 @@
-package com.dbexcercise;
+package com.dbexcercise.connection_with_abstract_class.dao;
+
+import com.dbexcercise.connection_with_abstract_class.domain.User;
 
 import java.sql.*;
 import java.util.Map;
