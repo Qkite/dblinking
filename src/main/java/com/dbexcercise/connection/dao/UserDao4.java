@@ -1,9 +1,13 @@
-package com.dbexcercise.connection;
+package com.dbexcercise.connection.dao;
 
-import com.dbexcercise.SimpleConnectionMaker;
 import com.dbexcercise.User;
+import com.dbexcercise.connection.connectionmaker.DConnectionMaker;
+import com.dbexcercise.connection.connectionmaker.NConnectionMaker;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Map;
 
 // interface를 상속받은 Nconnectionmaker 이용
@@ -16,7 +20,6 @@ public class UserDao4 {
         // default constructor
 
     }
-
 
     public UserDao4(NConnectionMaker nConnectionMaker){
         nConnectionMaker = new NConnectionMaker();
@@ -93,6 +96,12 @@ public class UserDao4 {
     public void deleteAll() throws SQLException, ClassNotFoundException {
         Connection connection = nConnectionMaker.makeConnection();
 
+        PreparedStatement ps = connection.prepareStatement("delete from users");
+
+        ps.executeUpdate();
+        ps.close();
+        connection.close();
+
 
     }
 
@@ -101,6 +110,5 @@ public class UserDao4 {
         userDao1.add(new User("7", "Ruru", "1123457"));
 
     }
-
 
 }

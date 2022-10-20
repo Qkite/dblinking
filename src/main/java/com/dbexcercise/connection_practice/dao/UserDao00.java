@@ -1,18 +1,16 @@
-package com.dbexcercise.connection_practice;
+package com.dbexcercise.connection_practice.dao;
 
 import com.dbexcercise.User;
+import com.dbexcercise.connection_practice.connectionmaker.MakeConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
-public class UserDao01 {
-    public void add(User user) throws ClassNotFoundException, SQLException {
+public class UserDao00 {
+    public void add() throws ClassNotFoundException, SQLException {
 
         Class.forName("com.mysql.cj.jdbc.Driver");
-        MakeConnectionWithInterface makeConnectionWithInterface = new MakeConnectionWithInterface();
-        Connection connection = makeConnectionWithInterface.makeConnection();
+        MakeConnection makeConnection = new MakeConnection();
+        Connection connection = makeConnection.makeConnection();
 
         PreparedStatement ps = connection.prepareStatement("INSERT INTO users(id, name, password) VALUES(?, ?, ?)");
         ps.setString (1, "2");
@@ -30,8 +28,8 @@ public class UserDao01 {
 
 
         Class.forName("com.mysql.cj.jdbc.Driver");
-        MakeConnectionWithInterface makeConnectionWithInterface = new MakeConnectionWithInterface();
-        Connection connection = makeConnectionWithInterface.makeConnection();
+        MakeConnection makeConnection = new MakeConnection();
+        Connection connection = makeConnection.makeConnection();
 
         PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
 
@@ -51,8 +49,9 @@ public class UserDao01 {
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UserDao01 userDao01 = new UserDao01();
-        userDao01.add(new User("11", "Hello", "112233"));
+        UserDao00 userDao00 = new UserDao00();
+        userDao00.add();
 
     }
+
 }

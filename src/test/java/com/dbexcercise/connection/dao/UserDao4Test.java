@@ -1,7 +1,9 @@
-package com.dbexcercise.connection;
+package com.dbexcercise.connection.dao;
 
 import com.dbexcercise.LocalUserDaoImpl;
 import com.dbexcercise.User;
+import com.dbexcercise.connection.dao.UserDao4;
+import com.dbexcercise.connection.dao.UserDaoFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

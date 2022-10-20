@@ -66,7 +66,7 @@ public abstract class UserDaoAbstract {
     public abstract Connection makeConnection() throws SQLException;
     //{
         //Map<String, String> env = System.getenv();
-        //Connection c = DriverManager.getConnection(env.get("DB_HOST"), env.get("DB_USER"), env.get("DB_PASSWORD"));
+        //Connection01 c = DriverManager.getConnection(env.get("DB_HOST"), env.get("DB_USER"), env.get("DB_PASSWORD"));
 
         //return c;
 

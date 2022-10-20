@@ -1,5 +1,7 @@
-package com.dbexcercise.connection;
+package com.dbexcercise.connection.dao;
 
+import com.dbexcercise.connection.connectionmaker.DConnectionMaker;
+import com.dbexcercise.connection.connectionmaker.NConnectionMaker;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

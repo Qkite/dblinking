@@ -1,4 +1,6 @@
-package com.dbexcercise.connection;
+package com.dbexcercise.connection.connectionmaker;
+
+import com.dbexcercise.connection.connectionmaker.ConnectionMaker;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,7 +9,9 @@ import java.util.Map;
 
 // 인터페이스 이용함
 
-public class DConnectionMaker implements ConnectionMaker{
+public class NConnectionMaker implements ConnectionMaker {
+
+
     @Override
     public Connection makeConnection() throws ClassNotFoundException, SQLException {
         Map<String, String> env = System.getenv();

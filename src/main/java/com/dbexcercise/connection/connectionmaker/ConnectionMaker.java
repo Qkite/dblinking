@@ -1,4 +1,4 @@
-package com.dbexcercise.connection;
+package com.dbexcercise.connection.connectionmaker;
 
 import java.sql.Connection;
 import java.sql.SQLException;

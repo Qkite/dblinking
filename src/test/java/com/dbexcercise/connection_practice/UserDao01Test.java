@@ -2,12 +2,11 @@ package com.dbexcercise.connection_practice;
 
 import com.dbexcercise.User;
 import com.dbexcercise.connection.UserDao4;
+import com.dbexcercise.connection_practice.dao.UserDao01;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserDao01Test {
 
